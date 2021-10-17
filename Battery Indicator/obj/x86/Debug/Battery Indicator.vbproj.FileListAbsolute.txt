@@ -1,0 +1,9 @@
+C:\Users\elemer\Documents\Scripts\VB\Battery Indicator\Battery Indicator\bin\Debug\Battery Indicator.exe
+C:\Users\elemer\Documents\Scripts\VB\Battery Indicator\Battery Indicator\bin\Debug\Battery Indicator.pdb
+C:\Users\elemer\Documents\Scripts\VB\Battery Indicator\Battery Indicator\bin\Debug\Battery Indicator.xml
+C:\Users\elemer\Documents\Scripts\VB\Battery Indicator\Battery Indicator\obj\x86\Debug\Battery_Indicator.Form1.resources
+C:\Users\elemer\Documents\Scripts\VB\Battery Indicator\Battery Indicator\obj\x86\Debug\Battery_Indicator.Resources.resources
+C:\Users\elemer\Documents\Scripts\VB\Battery Indicator\Battery Indicator\obj\x86\Debug\Battery Indicator.vbproj.GenerateResource.Cache
+C:\Users\elemer\Documents\Scripts\VB\Battery Indicator\Battery Indicator\obj\x86\Debug\Battery Indicator.exe
+C:\Users\elemer\Documents\Scripts\VB\Battery Indicator\Battery Indicator\obj\x86\Debug\Battery Indicator.xml
+C:\Users\elemer\Documents\Scripts\VB\Battery Indicator\Battery Indicator\obj\x86\Debug\Battery Indicator.pdb
