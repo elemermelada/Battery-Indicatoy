@@ -7,3 +7,16 @@ C:\Users\elemer\Documents\Scripts\VB\Battery Indicator\Battery Indicator\obj\x86
 C:\Users\elemer\Documents\Scripts\VB\Battery Indicator\Battery Indicator\obj\x86\Debug\Battery Indicator.exe
 C:\Users\elemer\Documents\Scripts\VB\Battery Indicator\Battery Indicator\obj\x86\Debug\Battery Indicator.xml
 C:\Users\elemer\Documents\Scripts\VB\Battery Indicator\Battery Indicator\obj\x86\Debug\Battery Indicator.pdb
+C:\Users\eleme\Documents\Battery-Indicator\Battery Indicator\bin\Debug\Battery Indicator.exe.config
+C:\Users\eleme\Documents\Battery-Indicator\Battery Indicator\bin\Debug\Battery Indicator.exe
+C:\Users\eleme\Documents\Battery-Indicator\Battery Indicator\bin\Debug\Battery Indicator.pdb
+C:\Users\eleme\Documents\Battery-Indicator\Battery Indicator\bin\Debug\Battery Indicator.xml
+C:\Users\eleme\Documents\Battery-Indicator\Battery Indicator\obj\x86\Debug\Battery Indicator.vbproj.AssemblyReference.cache
+C:\Users\eleme\Documents\Battery-Indicator\Battery Indicator\obj\x86\Debug\Battery Indicator.vbproj.SuggestedBindingRedirects.cache
+C:\Users\eleme\Documents\Battery-Indicator\Battery Indicator\obj\x86\Debug\Battery_Indicator.Form1.resources
+C:\Users\eleme\Documents\Battery-Indicator\Battery Indicator\obj\x86\Debug\Battery_Indicator.Resources.resources
+C:\Users\eleme\Documents\Battery-Indicator\Battery Indicator\obj\x86\Debug\Battery Indicator.vbproj.GenerateResource.cache
+C:\Users\eleme\Documents\Battery-Indicator\Battery Indicator\obj\x86\Debug\Battery Indicator.vbproj.CoreCompileInputs.cache
+C:\Users\eleme\Documents\Battery-Indicator\Battery Indicator\obj\x86\Debug\Battery Indicator.exe
+C:\Users\eleme\Documents\Battery-Indicator\Battery Indicator\obj\x86\Debug\Battery Indicator.xml
+C:\Users\eleme\Documents\Battery-Indicator\Battery Indicator\obj\x86\Debug\Battery Indicator.pdb
