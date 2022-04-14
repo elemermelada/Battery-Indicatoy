@@ -1,12 +1,13 @@
 ﻿Public Class Form1
 
     Dim curbat As Double = 0
+    Dim relax As Boolean = False
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
         Dim power As PowerStatus = SystemInformation.PowerStatus
         Dim percent As Single = power.BatteryLifePercent
-        curbat = percent
+        curbat = -1
         Timer1.Enabled = True
         NotifyIcon1.Visible = True
 
@@ -19,22 +20,26 @@
         Dim power As PowerStatus = SystemInformation.PowerStatus
         Dim percent As Single = power.BatteryLifePercent
 
-        If Not curbat = percent Then
+        If Not curbat = percent And Not relax Then
 
-            If percent = 0.8 And percent > curbat Then
+            If percent >= 0.8 And percent > curbat Then
 
+                Timer2.Enabled = True
+                relax = True
                 curbat = percent
                 NotifyIcon1.BalloonTipIcon = ToolTipIcon.Warning
                 NotifyIcon1.BalloonTipTitle = "Battery Indicator"
-                NotifyIcon1.BalloonTipText = "Battery at 80%"
+                NotifyIcon1.BalloonTipText = "Battery over 80%"
                 NotifyIcon1.ShowBalloonTip(5000)
 
-            ElseIf percent = 0.3 And percent < curbat Then
+            ElseIf percent <= 0.3 And percent < curbat Then
 
+                Timer2.Enabled = True
+                relax = True
                 curbat = percent
                 NotifyIcon1.BalloonTipIcon = ToolTipIcon.Warning
                 NotifyIcon1.BalloonTipTitle = "Battery Indicator"
-                NotifyIcon1.BalloonTipText = "Battery at 30%"
+                NotifyIcon1.BalloonTipText = "Battery under 30%"
                 NotifyIcon1.ShowBalloonTip(5000)
 
             End If
@@ -62,7 +67,12 @@
 
         MsgBox("Battery at " + percent.ToString)
 
-
     End Sub
 
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+
+        Timer2.Enabled = False
+        relax = False
+
+    End Sub
 End Class
