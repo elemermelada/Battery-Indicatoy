@@ -1,13 +1,11 @@
 ﻿Public Class Form1
 
-    Dim curbat As Double = 0
     Dim relax As Boolean = False
 
     Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
 
         Dim power As PowerStatus = SystemInformation.PowerStatus
         Dim percent As Single = power.BatteryLifePercent
-        curbat = -1
         Timer1.Enabled = True
         NotifyIcon1.Visible = True
 
@@ -15,28 +13,27 @@
 
     Private Sub Timer1_Tick(sender As System.Object, e As System.EventArgs) Handles Timer1.Tick
 
-        Hide()
+        Hide()  'stay hidden
 
         Dim power As PowerStatus = SystemInformation.PowerStatus
         Dim percent As Single = power.BatteryLifePercent
+        Dim charge As Single = power.BatteryChargeStatus
 
-        If Not curbat = percent And Not relax Then
+        If Not relax Then                                               'enough time after last notify has passed
 
-            If percent >= 0.8 And percent > curbat Then
+            If percent >= 0.8 And Math.Abs(charge - 8) < 2 Then         'battery over 80% and charging (using status 7,8 and 9 as charging???)
 
                 Timer2.Enabled = True
                 relax = True
-                curbat = percent
                 NotifyIcon1.BalloonTipIcon = ToolTipIcon.Warning
                 NotifyIcon1.BalloonTipTitle = "Battery Indicator"
                 NotifyIcon1.BalloonTipText = "Battery over 80%"
                 NotifyIcon1.ShowBalloonTip(5000)
 
-            ElseIf percent <= 0.3 And percent < curbat Then
+            ElseIf percent <= 0.3 And Math.Abs(charge - 8) >= 2 Then    'battery under 30% and discharging
 
                 Timer2.Enabled = True
                 relax = True
-                curbat = percent
                 NotifyIcon1.BalloonTipIcon = ToolTipIcon.Warning
                 NotifyIcon1.BalloonTipTitle = "Battery Indicator"
                 NotifyIcon1.BalloonTipText = "Battery under 30%"
@@ -45,6 +42,13 @@
             End If
 
         End If
+
+    End Sub
+
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+
+        Timer2.Enabled = False
+        relax = False
 
     End Sub
 
@@ -69,10 +73,16 @@
 
     End Sub
 
-    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+    Private Sub ChargingStatusToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChargingStatusToolStripMenuItem.Click
 
-        Timer2.Enabled = False
-        relax = False
+        Dim power As PowerStatus = SystemInformation.PowerStatus
+        Dim charge As Single = power.BatteryChargeStatus
+
+        If Math.Abs(charge - 8) < 2 Then    'really have no idea why this returns 9 instead of 8
+            MsgBox("Battery charging")
+        Else
+            MsgBox("Battery discharging")
+        End If
 
     End Sub
 End Class
