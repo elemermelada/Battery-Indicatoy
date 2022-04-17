@@ -21,7 +21,7 @@
 
         If Not relax Then                                               'enough time after last notify has passed
 
-            If percent >= 0.8 And Math.Abs(charge - 8) < 2 Then         'battery over 80% and charging (using status 7,8 and 9 as charging???)
+            If percent >= 0.8 And charge >= 8 Then                      'battery over 80% and charging (using status 7,8 and 9 as charging???)
 
                 Timer2.Enabled = True
                 relax = True
@@ -30,7 +30,7 @@
                 NotifyIcon1.BalloonTipText = "Battery over 80%"
                 NotifyIcon1.ShowBalloonTip(5000)
 
-            ElseIf percent <= 0.3 And Math.Abs(charge - 8) >= 2 Then    'battery under 30% and discharging
+            ElseIf percent <= 0.3 And charge < 8 Then                   'battery under 30% and discharging
 
                 Timer2.Enabled = True
                 relax = True
@@ -78,10 +78,10 @@
         Dim power As PowerStatus = SystemInformation.PowerStatus
         Dim charge As Single = power.BatteryChargeStatus
 
-        If Math.Abs(charge - 8) < 2 Then    'really have no idea why this returns 9 instead of 8
-            MsgBox("Battery charging")
+        If charge >= 8 Then    'really have no idea why this returns 9 instead of 8
+            MsgBox("Battery charging: " + charge.ToString)
         Else
-            MsgBox("Battery discharging")
+            MsgBox("Battery discharging: " + charge.ToString)
         End If
 
     End Sub
