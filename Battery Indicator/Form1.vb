@@ -27,7 +27,7 @@
                 relax = True
                 NotifyIcon1.BalloonTipIcon = ToolTipIcon.Warning
                 NotifyIcon1.BalloonTipTitle = "Battery Indicator"
-                NotifyIcon1.BalloonTipText = "Battery over 80%"
+                NotifyIcon1.BalloonTipText = "Battery over " + (percent * 100).ToString + "%"
                 NotifyIcon1.ShowBalloonTip(5000)
 
             ElseIf percent <= 0.3 And charge < 8 Then                   'battery under 30% and discharging
@@ -36,7 +36,7 @@
                 relax = True
                 NotifyIcon1.BalloonTipIcon = ToolTipIcon.Warning
                 NotifyIcon1.BalloonTipTitle = "Battery Indicator"
-                NotifyIcon1.BalloonTipText = "Battery under 30%"
+                NotifyIcon1.BalloonTipText = "Battery under " + (percent * 100).ToString + "%"
                 NotifyIcon1.ShowBalloonTip(5000)
 
             End If
