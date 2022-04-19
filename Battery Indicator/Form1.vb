@@ -64,24 +64,16 @@
 
     End Sub
 
-    Private Sub BatteryStatusToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles BatteryStatusToolStripMenuItem.Click
-
-        Dim power As PowerStatus = SystemInformation.PowerStatus
-        Dim percent As Single = power.BatteryLifePercent
-
-        MsgBox("Battery at " + percent.ToString)
-
-    End Sub
-
     Private Sub ChargingStatusToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChargingStatusToolStripMenuItem.Click
 
         Dim power As PowerStatus = SystemInformation.PowerStatus
+        Dim percent As Single = power.BatteryLifePercent
         Dim charge As Single = power.BatteryChargeStatus
 
         If charge >= 8 Then    'really have no idea why this returns 9 instead of 8
-            MsgBox("Battery charging: " + charge.ToString)
+            MsgBox("Battery charging (id: " + charge.ToString + ")" + vbNewLine + vbNewLine + "Charge at: " + (percent * 100).ToString + "%")
         Else
-            MsgBox("Battery discharging: " + charge.ToString)
+            MsgBox("Battery discharging (id: " + charge.ToString + ")" + vbNewLine + vbNewLine + "Charge at: " + (percent * 100).ToString + "%")
         End If
 
     End Sub

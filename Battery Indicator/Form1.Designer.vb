@@ -28,9 +28,8 @@ Partial Class Form1
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BatteryStatusToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.ChargingStatusToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -46,31 +45,25 @@ Partial Class Form1
         'ContextMenuStrip1
         '
         Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem, Me.BatteryStatusToolStripMenuItem, Me.ChargingStatusToolStripMenuItem})
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem, Me.ChargingStatusToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(211, 104)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(183, 52)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(182, 24)
         Me.ExitToolStripMenuItem.Text = "Exit"
-        '
-        'BatteryStatusToolStripMenuItem
-        '
-        Me.BatteryStatusToolStripMenuItem.Name = "BatteryStatusToolStripMenuItem"
-        Me.BatteryStatusToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
-        Me.BatteryStatusToolStripMenuItem.Text = "Battery Status"
-        '
-        'Timer2
-        '
-        Me.Timer2.Interval = 60000
         '
         'ChargingStatusToolStripMenuItem
         '
         Me.ChargingStatusToolStripMenuItem.Name = "ChargingStatusToolStripMenuItem"
-        Me.ChargingStatusToolStripMenuItem.Size = New System.Drawing.Size(210, 24)
+        Me.ChargingStatusToolStripMenuItem.Size = New System.Drawing.Size(182, 24)
         Me.ChargingStatusToolStripMenuItem.Text = "Charging Status"
+        '
+        'Timer2
+        '
+        Me.Timer2.Interval = 60000
         '
         'Form1
         '
@@ -88,7 +81,6 @@ Partial Class Form1
     Friend WithEvents NotifyIcon1 As System.Windows.Forms.NotifyIcon
     Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents BatteryStatusToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Timer2 As Timer
     Friend WithEvents ChargingStatusToolStripMenuItem As ToolStripMenuItem
 End Class
