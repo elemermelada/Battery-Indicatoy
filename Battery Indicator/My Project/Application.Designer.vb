@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.Battery_Indicator.Form1
+            Me.MainForm = Global.Battery_Indicator.BatteryIndicator
         End Sub
     End Class
 End Namespace
