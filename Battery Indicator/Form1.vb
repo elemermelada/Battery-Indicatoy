@@ -1,4 +1,6 @@
-﻿Public Class BatteryIndicator
+﻿Imports System.Reflection
+
+Public Class BatteryIndicator
 
     Public relax As Boolean = False
     Public settings As Object
@@ -18,6 +20,21 @@
         CheckStatusTimer.Enabled = True
         NotifyIcon.Visible = True
 
+        'show infooo
+        'infooo()
+
+    End Sub
+
+    Private Sub infooo()
+        Dim log As String = ""
+        Dim t As Type = GetType(System.Windows.Forms.PowerStatus)
+        Dim pi As PropertyInfo() = t.GetProperties()
+        Dim i As Integer
+        For i = 0 To pi.Length - 1
+            Dim propval As Object = pi(i).GetValue(SystemInformation.PowerStatus, Nothing)
+            Log += ControlChars.CrLf + "    PowerStatus." + pi(i).Name + " is: " + propval.ToString()
+        Next i
+        MsgBox(log)
     End Sub
 
     Public Sub applySettings()
@@ -37,17 +54,17 @@
 
         Dim power As PowerStatus = SystemInformation.PowerStatus
         Dim percent As Single = power.BatteryLifePercent
-        Dim charge As Single = power.BatteryChargeStatus
+        Dim charging As Single = power.PowerLineStatus
 
         If Not relax Then                                               'enough time after last notify has passed
-            If percent >= settings("max") And charge >= 8 Then                      'battery over 80% and charging (using status 7,8 and 9 as charging???)
+            If percent >= settings("max") And charging = 1 Then                      'battery over 80% and charging (using status 7,8 and 9 as charging???)
                 RelaxTimer.Enabled = True
                 relax = True
                 NotifyIcon.BalloonTipIcon = ToolTipIcon.Warning
                 NotifyIcon.BalloonTipTitle = "Battery Indicator"
                 NotifyIcon.BalloonTipText = "Battery over " + (percent * 100).ToString + "%"
                 NotifyIcon.ShowBalloonTip(5000)
-            ElseIf percent <= settings("min") And charge < 8 Then                   'battery under 30% and discharging
+            ElseIf percent <= settings("min") And charging = 0 Then                   'battery under 30% and discharging
                 RelaxTimer.Enabled = True
                 relax = True
                 NotifyIcon.BalloonTipIcon = ToolTipIcon.Warning
@@ -76,12 +93,12 @@
 
         Dim power As PowerStatus = SystemInformation.PowerStatus
         Dim percent As Single = power.BatteryLifePercent
-        Dim charge As Single = power.BatteryChargeStatus
+        Dim charging As Single = power.PowerLineStatus
 
-        If charge >= 8 Then    'really have no idea why this returns 9 instead of 8
-            MsgBox("Battery charging (id: " + charge.ToString + ")" + vbNewLine + vbNewLine + "Charge at: " + (percent * 100).ToString + "%")
+        If charging = 1 Then    'really have no idea why this returns 9 instead of 8
+            MsgBox("Battery charging (id: " + charging.ToString + ")" + vbNewLine + vbNewLine + "Charge at: " + (percent * 100).ToString + "%")
         Else
-            MsgBox("Battery discharging (id: " + charge.ToString + ")" + vbNewLine + vbNewLine + "Charge at: " + (percent * 100).ToString + "%")
+            MsgBox("Battery discharging (id: " + charging.ToString + ")" + vbNewLine + vbNewLine + "Charge at: " + (percent * 100).ToString + "%")
         End If
 
     End Sub
@@ -94,7 +111,7 @@
 
         Dim power As PowerStatus = SystemInformation.PowerStatus
         Dim percent As Single = power.BatteryLifePercent
-        Dim charge As Single = power.BatteryChargeStatus
+        Dim charging As Single = power.PowerLineStatus
 
         Dim unix As Double = Int((DateTime.UtcNow - New DateTime(1970, 1, 1, 0, 0, 0)).TotalSeconds)
 
@@ -102,7 +119,7 @@
             SaveLogsTimer.Enabled = False
         End If
 
-        System.IO.File.AppendAllText("log.csv", vbNewLine + unix.ToString + ", " + percent.ToString + ", " + charge.ToString)
+        System.IO.File.AppendAllText("log.csv", vbNewLine + unix.ToString + ", " + percent.ToString + ", " + charging.ToString)
 
     End Sub
 
